@@ -1,7 +1,8 @@
 
 import { useState } from "react";
 
-function ExpenseForm(){
+
+function ExpenseForm(props){
     const[enteredTitle,setEnteredTitle]=useState("")
     const[enteredAmount,setEnteredAmount]=useState("")
     const[enteredDate,setEnteredDate]=useState("")
@@ -32,7 +33,11 @@ function ExpenseForm(){
                 location:enteredLocation,
                 date:new Date(enteredDate)
             };
-            console.log(expenseData)
+            props.onSaveExpenseData(expenseData)
+            setEnteredTitle("")
+            setEnteredAmount("")
+            setEnteredLocaion("")
+            setEnteredDate("")
 
         }
 
@@ -50,26 +55,26 @@ function ExpenseForm(){
             <form onSubmit={onSubmitHandler}>
                 <div>
                 <label>Title</label>
-                <input type="text " onChange={ChangeTitle}/>
+                <input type="text " value={enteredTitle} onChange={ChangeTitle}/>
 
                 </div>
                 
                 <div>
                 <label>Amount</label>
-                <input type="number" onChange={ChangeAmount}/>
+                <input type="number" value={enteredAmount} onChange={ChangeAmount}/>
 
                     
                 </div>
 
                 <div>
                 <label>Location</label>
-                <input type="text" onChange={ChangeLocation}/>
+                <input type="text" value={enteredLocation} onChange={ChangeLocation}/>
 
                     
                 </div>
                 <div>
                 <label>Date</label>
-                <input type="date" onChange={ChangeDate}/>
+                <input type="date" value={enteredDate} onChange={ChangeDate}/>
 
                     
                 </div>
