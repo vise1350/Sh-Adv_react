@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 
+import "./ExpenseForm.css"
 
 function ExpenseForm(props){
     const[enteredTitle,setEnteredTitle]=useState("")
@@ -79,6 +80,7 @@ function ExpenseForm(props){
                     
                 </div>
                 <div>
+                    <button type="button" onClick={props.onCancel}>Cancel</button>
                     <button type="Submit" >Add Expense</button>
                 </div>
 
